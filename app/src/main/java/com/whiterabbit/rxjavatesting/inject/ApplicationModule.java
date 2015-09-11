@@ -17,7 +17,7 @@
  */
 
 package com.whiterabbit.rxjavatesting.inject;
-import com.whiterabbit.rxjavatesting.TestObservables;
+import com.whiterabbit.rxjavatesting.ObservablesFactory;
 
 
 import dagger.Module;
@@ -26,7 +26,7 @@ import dagger.Provides;
 @Module
 public class ApplicationModule {
     @Provides
-    TestObservables provideObservables() {
-        return new TestObservables();
+    ObservablesFactory provideObservables() {
+        return new ObservablesFactory();
     }
 }

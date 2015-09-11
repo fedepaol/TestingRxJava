@@ -1,5 +1,7 @@
 package com.whiterabbit.rxjavatesting;
 
+import com.whiterabbit.rxjavatesting.pojos.RubberChicken;
+
 import junit.framework.Assert;
 
 import org.junit.After;
@@ -22,11 +24,11 @@ import static org.junit.Assert.assertTrue;
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class)
 public class ObservablesTest {
-    private TestObservables obsFactory;
+    private ObservablesFactory obsFactory;
 
     @Before
     public void setUp() {
-        obsFactory = new TestObservables();
+        obsFactory = new ObservablesFactory();
     }
 
     @After

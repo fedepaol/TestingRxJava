@@ -20,8 +20,8 @@ package com.whiterabbit.rxjavatesting.inject;
 
 
 
-import com.whiterabbit.rxjavatesting.RubberChicken;
-import com.whiterabbit.rxjavatesting.TestObservables;
+import com.whiterabbit.rxjavatesting.pojos.RubberChicken;
+import com.whiterabbit.rxjavatesting.ObservablesFactory;
 
 import org.mockito.Mockito;
 
@@ -33,8 +33,8 @@ import static org.mockito.Mockito.when;
 
 public class MockApplicationModule extends ApplicationModule {
     @Provides
-    TestObservables provideObservables() {
-        TestObservables res = Mockito.mock(TestObservables.class);
+    ObservablesFactory provideObservables() {
+        ObservablesFactory res = Mockito.mock(ObservablesFactory.class);
         Observable<RubberChicken> resObservable = Observable.just(new RubberChicken("fedepaol"));
         when(res.getObservable()).thenReturn(resObservable);
         return res;

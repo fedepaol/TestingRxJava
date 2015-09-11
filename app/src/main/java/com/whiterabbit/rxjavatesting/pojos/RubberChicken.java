@@ -1,4 +1,4 @@
-package com.whiterabbit.rxjavatesting;
+package com.whiterabbit.rxjavatesting.pojos;
 
 public class RubberChicken {
     private String name;

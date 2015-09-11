@@ -1,5 +1,7 @@
 package com.whiterabbit.rxjavatesting;
 
+import com.whiterabbit.rxjavatesting.pojos.RubberChicken;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -7,7 +9,7 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Func1;
 
-public class TestObservables {
+public class ObservablesFactory {
     public Observable<RubberChicken> getObservable() {
         return Observable.create(new Observable.OnSubscribe<RubberChicken>() {
             @Override

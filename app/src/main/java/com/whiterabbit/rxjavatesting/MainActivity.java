@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.TextView;
 
+import com.whiterabbit.rxjavatesting.pojos.RubberChicken;
+
 import javax.inject.Inject;
 
 import rx.Observable;
@@ -15,7 +17,7 @@ import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
     @Inject
-    TestObservables mObservables;
+    ObservablesFactory mObservables;
 
     private Subscription mSubscription;
     private TextView mTextView;
