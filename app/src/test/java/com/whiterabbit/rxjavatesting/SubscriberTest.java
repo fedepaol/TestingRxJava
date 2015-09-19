@@ -6,6 +6,7 @@ import junit.framework.Assert;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
@@ -32,25 +33,25 @@ import static org.junit.Assert.assertEquals;
 @Config(constants = BuildConfig.class,
 application = TestRobolectricApplication.class)
 public class SubscriberTest {
-
-    private void forceImmediateScheduler() {
-        RxJavaTestPlugins.resetPlugins();
+    @BeforeClass
+    public static void startSetup() {
         RxAndroidPlugins.getInstance().registerSchedulersHook(new RxAndroidSchedulersHook() {
             @Override
             public Scheduler getMainThreadScheduler() {
                 return Schedulers.immediate();
             }
         });
+    }
 
+    private void forceImmediateScheduler() {
+        RxJavaTestPlugins.resetPlugins();
         RxJavaPlugins.getInstance().registerSchedulersHook(new RxJavaSchedulersHook() {
-
             @Override
             public Scheduler getIOScheduler() {
                 return Schedulers.immediate();
             }
         });
     }
-
 
     @Before
     public void setUp() {
