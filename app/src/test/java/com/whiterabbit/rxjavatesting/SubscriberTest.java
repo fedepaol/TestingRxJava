@@ -29,12 +29,12 @@ import static junit.framework.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 
 
-@RunWith(RobolectricGradleTestRunner.class)
+@RunWith(RxJavaTestRunner.class)
 @Config(constants = BuildConfig.class,
 application = TestRobolectricApplication.class)
 public class SubscriberTest {
-    @BeforeClass
-    public static void startSetup() {
+    @Before
+    public void setup() {
         RxAndroidPlugins.getInstance().registerSchedulersHook(new RxAndroidSchedulersHook() {
             @Override
             public Scheduler getMainThreadScheduler() {
@@ -43,24 +43,9 @@ public class SubscriberTest {
         });
     }
 
-    private void forceImmediateScheduler() {
-        RxJavaTestPlugins.resetPlugins();
-        RxJavaPlugins.getInstance().registerSchedulersHook(new RxJavaSchedulersHook() {
-            @Override
-            public Scheduler getIOScheduler() {
-                return Schedulers.immediate();
-            }
-        });
-    }
-
-    @Before
-    public void setUp() {
-        forceImmediateScheduler();
-    }
-
     @After
     public void tearDown() {
-        RxJavaTestPlugins.resetPlugins();
+        RxAndroidPlugins.getInstance().reset();
     }
 
     @Test
